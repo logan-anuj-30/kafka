@@ -1,0 +1,25 @@
+server:
+  port: 5000
+  servlet:
+    context-path: /v1
+
+application:
+    title: My Kafka Project
+    version: 1.0
+
+#spring:
+#  kafka:
+#    producer:
+#      bootstrap-server: localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#    consumer:
+#      bootstrap-server: localhost:9092
+#      group-id: consumer-group-1
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring:
+#          json:
+#            trusted:
+#              packages: com.kafka.modal
