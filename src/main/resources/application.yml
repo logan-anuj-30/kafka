@@ -7,6 +7,11 @@ application:
     title: My Kafka Project
     version: 1.0
 
+logging:
+  level:
+    org.springframework.kafka.retrytopic: DEBUG
+    org.springframework.kafka.listener: DEBUG
+
 #spring:
 #  kafka:
 #    producer:
