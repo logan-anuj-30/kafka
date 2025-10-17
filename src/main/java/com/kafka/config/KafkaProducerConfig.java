@@ -1,5 +1,6 @@
 package com.kafka.config;
 
+import com.kafka.service.CustomPartitionLogic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,10 @@ public class KafkaProducerConfig {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+
+        // For custom partition
+        config.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartitionLogic.class.getName());
+
         return config;
     }
 

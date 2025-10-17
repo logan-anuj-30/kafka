@@ -8,8 +8,10 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class User {
-    private Integer id;
+    private String id;
     private Long longitude;
     private Long latitude;
 }

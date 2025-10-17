@@ -30,7 +30,8 @@ public class ProducerController {
     public ResponseEntity<String> produce(@RequestBody() User user) {
         try {
             // From Producer, we are sending the byte array to the topic
-            CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(KafkaConstants.UPDATE_USER_LOCATION_TOPIC, user);
+            CompletableFuture<SendResult<String, Object>> future = kafkaTemplate
+                    .send(KafkaConstants.UPDATE_USER_LOCATION_TOPIC, user.getId(), user);
             future.whenComplete((result, exception) -> {
                 if (exception != null) {
                     LOG.warn("produce - Exception <{}> occurred", ExceptionUtils.getStackTrace(exception));
@@ -39,6 +40,7 @@ public class ProducerController {
                 LOG.info("produce - Successfully produced <{}> to offset <{}> partition <{}>",
                         result.getProducerRecord().value(), result.getRecordMetadata().offset(), result.getRecordMetadata().partition());
             });
+
 
         } catch (Exception exception) {
             LOG.error("produce - Exception <{}> occurred", ExceptionUtils.getStackTrace(exception));
